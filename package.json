@@ -1,0 +1,33 @@
+{
+  "name": "threelearning",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BIZZEW/threelearning.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BIZZEW/threelearning/issues"
+  },
+  "homepage": "https://github.com/BIZZEW/threelearning#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "three": "^0.115.0"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "6.24.1",
+    "babel-core": "6.26.3",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}
