@@ -1,10 +1,13 @@
 var webpack = require("webpack")
 var path = require('path')
 module.exports = {
-    entry: './src/firstThree.js',
+    entry: {
+        firstThree: './src/firstThree.js',
+        secondThree: './src/secondThree.js',
+    },
     output: {
+        filename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
     },
     module: {
         rules: [
