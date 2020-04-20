@@ -1,5 +1,5 @@
-import * as THREE from "three";
-import WEBGL from "./WebGL";
+import * as THREE from 'three';
+import { WEBGL } from 'three/examples/jsm/WebGL';
 
 // 创建场景
 var scene = new THREE.Scene();
