@@ -1,7 +1,8 @@
 import * as THREE from 'three';
-import { WEBGL } from 'three/examples/jsm/WebGL';
 
+// 工具
 var renderer, scene, camera;
+// 素材
 var geometry, line, material;
 
 var MAX_POINTS = 1000, drawCount = 0, positions;
@@ -28,22 +29,28 @@ function init() {
     // 创建场景
     scene = new THREE.Scene();
 
+    // 创建几何体
     geometry = new THREE.BufferGeometry();
 
     // 属性
     positions = new Float32Array(MAX_POINTS * 3);
-    // 每个点有三个值
+
+    // 每个点有三个值(x,y,z)
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-    // 先只绘制两个点
+    // 从0开始绘制两个点
     geometry.setDrawRange(drawCount, 2);
 
+    // 创建材质
     material = new THREE.LineBasicMaterial({ color: 0xff0000 });
 
+    // 创建线
     line = new THREE.Line(geometry, material);
 
+    // 场景中加入线
     scene.add(line);
 
+    // 为每个点随机赋予坐标值
     positions = line.geometry.attributes.position.array;
 
     var x, y, z, index;
