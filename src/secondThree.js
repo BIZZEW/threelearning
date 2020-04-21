@@ -3,17 +3,18 @@ import { WEBGL } from 'three/examples/jsm/WebGL';
 
 // 创建渲染器
 var renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
+renderer.setSize(window.innerWidth, window.innerHeight);
 
 // 绑定渲染器
 document.body.appendChild(renderer.domElement);
 
 // 创建相机（视野角度（FOV），长宽比（aspect ratio），近截面（near），远截面（far）
-var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 500);
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 // 设置相机位置
-camera.position.set(0, 0, 100);
+// camera.position.set(0, 0, 5);
+camera.position.z = 5;
 // 设置相机方向
-camera.lookAt(0, 0, 0);
+// camera.lookAt(0, 0, 0);
 
 // 创建场景
 var scene = new THREE.Scene();
@@ -30,8 +31,16 @@ geometry.vertices.push(new THREE.Vector3(10, 0, 0));
 
 var line = new THREE.Line(geometry, material);
 
+var geometry = new THREE.BoxGeometry(1, 1, 1);
+var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+
+// 创建网格（几何体，材质）
+var cube = new THREE.Mesh(geometry, material);
+
+cube.add(line);
+
 // 线条加入场景
-scene.add(line);
+scene.add(cube);
 
 if (WEBGL.isWebGLAvailable())
     animate();
