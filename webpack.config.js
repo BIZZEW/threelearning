@@ -2,6 +2,7 @@ var webpack = require("webpack");
 var path = require('path');
 var path = require('path');
 var glob = require('glob');
+var htmlWebpackPlugin = require('html-webpack-plugin');
 
 function entries(globPath) {
     var files = glob.sync(globPath);
@@ -17,14 +18,25 @@ function entries(globPath) {
 }
 
 module.exports = {
-    entry: entries('./src/*.js'),
+    entry: entries('src/**/*.js'),
     output: {
-        filename: '[name].js',
+        // filename: '[name]-[hash].js',
+        filename: '[name]-bundled.js',
         path: path.resolve(__dirname, 'dist'),
     },
     module: {
         rules: [
             { test: /\.js$/, use: 'babel-loader' }
         ]
-    }
+    },
+    plugins: [
+        new htmlWebpackPlugin({
+            filename: 'index.html',
+            template: 'index.html',
+            inject: true,
+            title: 'my THREE',
+            minify: false,
+            favicon:"./favicon.ico"
+        })
+    ]
 }
