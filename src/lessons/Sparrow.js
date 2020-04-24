@@ -5,7 +5,7 @@ var scene = new THREE.Scene();
  * 创建网格模型
  */
 // var geometry = new THREE.SphereGeometry(60, 40, 40); //创建一个球体几何对象
-var geometry = new THREE.BoxGeometry(50, 100, 100); //创建一个立方体几何对象Geometry
+var geometry = new THREE.BoxGeometry(100, 100, 100); //创建一个立方体几何对象Geometry
 var material = new THREE.MeshLambertMaterial({
     color: 0x0000ff
 }); //材质对象Material
@@ -32,7 +32,7 @@ var k = width / height; //窗口宽高比
 var s = 300; //三维场景显示范围控制系数，系数越大，显示的范围越大
 //创建相机对象
 var camera = new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000);
-camera.position.set(250, 300, 200); //设置相机位置
+camera.position.set(200, 300, 200); //设置相机位置
 camera.lookAt(scene.position); //设置相机方向(指向的场景对象)
 /**
  * 创建渲染器对象
@@ -44,27 +44,27 @@ document.body.appendChild(renderer.domElement); //body元素中插入canvas对�
 //执行渲染操作   指定场景、相机作为参数
 // renderer.render(scene, camera);
 
-animate();
-
-function animate() {
-    requestAnimationFrame(animate);
-
-    // 让几何体旋转起来
-    mesh.rotation.x += 0.01;
-    mesh.rotation.y += 0.01;
-    mesh.rotation.z += 0.01;
-
-    render();
-}
-
+let T0 = new Date();
 
 function render() {
+    let T1 = new Date();
+    let t = T1 - T0;
+    T0 = T1;
+
+    requestAnimationFrame(render);
     renderer.render(scene, camera);
 
-    // if (drawCount <= MAX_POINTS)
-    //     line.geometry.setDrawRange(drawCount++, 2);
-    // else
-    //     drawCount = 0;
+    // mesh.rotateY(0.001 * t);
+    // mesh.rotateX(0.001 * t);
+    // mesh.rotateZ(0.001 * t);
 
-    // line.geometry.attributes.position.needsUpdate = true;
+    mesh.rotation.x += (0.01);
+    mesh.rotation.y += (0.01);
+    mesh.rotation.z += (0.01);
+
+    // mesh.rotation.x += (0.001 * t);
+    // mesh.rotation.y += (0.001 * t);
+    // mesh.rotation.z += (0.001 * t);
 }
+
+render();
