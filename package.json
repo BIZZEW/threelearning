@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "autowp": "webpack -p -w"
+    "autowp": "webpack -p -w",
+    "server": "live-server ./ --port=8081"
   },
   "repository": {
     "type": "git",
