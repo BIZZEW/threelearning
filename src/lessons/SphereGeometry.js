@@ -7,7 +7,9 @@ var scene = new THREE.Scene();
 //长方体 参数：长，宽，高
 var geometry1 = new THREE.BoxGeometry(100, 100, 100);
 var material1 = new THREE.MeshLambertMaterial({
-    color: 0x0000ff
+    color: 0x0000ff,
+    opacity: 0.3,
+    transparent: true
 });
 var mesh1 = new THREE.Mesh(geometry1, material1);
 scene.add(mesh1);
@@ -15,8 +17,10 @@ scene.add(mesh1);
 
 // 球体 参数：半径60  经纬度细分数40,40
 var geometry2 = new THREE.SphereGeometry(60, 40, 40);
-var material2 = new THREE.MeshLambertMaterial({
-    color: 0xff00ff
+var material2 = new THREE.MeshPhongMaterial({
+    color: 0x0000ff,
+    specular: 0xff00ff,
+    shininess: 12
 });
 var mesh2 = new THREE.Mesh(geometry2, material2);
 mesh2.translateY(120);
@@ -28,6 +32,8 @@ var geometry3 = new THREE.CylinderGeometry(50, 50, 100, 25);
 var material3 = new THREE.MeshLambertMaterial({
     color: 0xffff00
 });
+material3.opacity = 0.5;
+material3.transparent = true;
 var mesh3 = new THREE.Mesh(geometry3, material3);
 mesh3.position.set(120, 0, 0);
 scene.add(mesh3);
@@ -74,8 +80,9 @@ scene.add(point); //点光源添加到场景中
 //环境光
 var ambient = new THREE.AmbientLight(0x444444);
 scene.add(ambient);
-// console.log(scene)
-// console.log(scene.children)
+
+console.log(scene)
+console.log(scene.children)
 
 /**
  * 相机设置
