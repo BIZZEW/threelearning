@@ -59,7 +59,7 @@ var material6 = new THREE.MeshLambertMaterial({
     color: 0x2de6ff
 });
 var mesh6 = new THREE.Mesh(geometry6, material6);
-mesh6.position.set(0, 0, -120);
+mesh6.position.set(0, 0, 120);
 scene.add(mesh6);
 
 
@@ -87,7 +87,7 @@ var s = 300; //三维场景显示范围控制系数，系数越大，显示的�
 
 //创建相机对象
 var camera = new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000);
-camera.position.set(200, 300, 200); //设置相机位置
+camera.position.set(300, 300, 300); //设置相机位置
 camera.lookAt(scene.position); //设置相机方向(指向的场景对象)
 
 /**
