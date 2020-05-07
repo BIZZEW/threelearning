@@ -3,9 +3,17 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 var scene = new THREE.Scene();
 
-//创建一个球体几何对
-var geometry = new THREE.PlaneGeometry(50, 50, 50, 50);
+//创建一个平面几何对象
+var geometry = new THREE.BoxGeometry(100, 100, 100);
 
+// geometry.faces.forEach(face => {
+//     face.vertexColors = [
+//         new THREE.Color(0xffff00),
+//         new THREE.Color(0xff00ff),
+//         new THREE.Color(0x00ffff),
+//     ]
+//     // face.color=new THREE.Color(0x00ffff)
+// });
 
 
 
@@ -88,12 +96,12 @@ var geometry = new THREE.PlaneGeometry(50, 50, 50, 50);
 // });
 
 // 高光网格材质MeshPhongMaterial除了和MeshLambertMaterial一样可以实现光源和网格表面的漫反射光照计算，还可以产生高光效果(镜面反射)。
-var material = new THREE.MeshPhongMaterial({
-    color: 0x220000,
-    // transparent设置为true，开启透明，否则opacity不起作用
-    transparent: true,
-    // 设置材质透明度
-    opacity: 0.4,
+var material = new THREE.MeshBasicMaterial({
+    color: 0x0000ff,
+    // vertexColors: THREE.FaceColors,
+    // vertexColors: THREE.VertexColors,
+    // wireframe: true,//线框模式渲染,
+    side: THREE.DoubleSide //两面可见
 });
 
 // transparent设置为true，开启透明，否则opacity不起作用
@@ -104,6 +112,35 @@ material.opacity = 0.9;
 var mesh = new THREE.Mesh(geometry, material);
 
 scene.add(mesh);
+
+mesh.scale.set(0.5, 1.5, 2);
+
+mesh.scale.x = 2.0;
+
+mesh.position.y = 80;
+
+mesh.position.set(80, 2, 10);
+
+// 等价于mesh.position = mesh.position + 100;
+mesh.translateX(100);//沿着x轴正方向平移距离100
+
+mesh.translateZ(-50);
+
+//向量Vector3对象表示方向
+var axis = new THREE.Vector3(1, 1, 1);
+
+axis.normalize(); //向量归一化
+
+//沿着axis轴表示方向平移100
+mesh.translateOnAxis(axis, 100);
+
+// mesh.rotateX(Math.PI / 4);//绕x轴旋转π/4
+
+var axis2 = new THREE.Vector3(1, 1, 1);//向量axis
+
+mesh.rotateOnAxis(axis2, Math.PI / 8);//绕axis轴旋转π/8
+
+
 
 
 
