@@ -3,19 +3,6 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 var scene = new THREE.Scene();
 
-// var p1 = new THREE.Vector3(1.2, 2.6, 3.2);
-// var p2 = new THREE.Vector3(0.0, 0.0, 0.0);
-
-// p2.copy(p1);
-
-// // p2向量的xyz变为p1的xyz值
-// // console.log(p2);
-
-// var p3 = new THREE.Vector3(1.2, 2.6, 3.2);
-// var p4 = p3.clone();
-// // p2对象和p1对象xyz属性相同
-// console.log(p4);
-
 
 
 //创建一个立方体几何对象
@@ -29,7 +16,7 @@ var mesh2 = mesh.clone();
 //网格模型mesh平移
 mesh.translateX(20);
 //网格模型添加到场景中
-scene.add(mesh, mesh2);
+scene.add(mesh2);
 //几何体缩放
 box.scale(1.5, 1.5, 1.5);//几何体缩放
 
@@ -98,20 +85,31 @@ box.scale(1.5, 1.5, 1.5);//几何体缩放
  */
 
 //点光源
-var point = new THREE.PointLight(0xffffff);
-point.position.set(200, 200, 200); //点光源位置
-// 通过add方法插入场景中，不插入的话，渲染的时候不会获取光源的信息进行光照计算
-scene.add(point); //点光源添加到场景中
+// var point = new THREE.PointLight(0xffffff);
+// point.position.set(-400, -200, -300); //点光源位置
+// // 通过add方法插入场景中，不插入的话，渲染的时候不会获取光源的信息进行光照计算
+// scene.add(point); //点光源添加到场景中
+
 
 // 点光源2  位置和point关于原点对称
-// var point2 = new THREE.PointLight(0xffffff);
-// point2.position.set(-400, -200, -300); //点光源位置
-// scene.add(point2); //点光源添加到场景中
+var point2 = new THREE.PointLight(0xffffff);
+point2.position.set(400, 200, 300); //点光源位置
+scene.add(point2); //点光源添加到场景中
+
 
 //环境光    环境光颜色与网格模型的颜色进行RGB进行乘法运算
 var ambient = new THREE.AmbientLight(0x444444);
 // var ambient = new THREE.AmbientLight(0xffffff);
 scene.add(ambient);
+
+
+// 平行光
+var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+// 设置光源的方向：通过光源position属性和目标指向对象的position属性计算
+directionalLight.position.set(0, 100, 100);
+// 方向光指向对象网格模型mesh2，可以不设置，默认的位置是0,0,0
+directionalLight.target = mesh2;
+scene.add(directionalLight);
 
 
 // console.log(scene)
