@@ -3,18 +3,40 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 var scene = new THREE.Scene();
 
-var p1 = new THREE.Vector3(1.2, 2.6, 3.2);
-var p2 = new THREE.Vector3(0.0, 0.0, 0.0);
+// var p1 = new THREE.Vector3(1.2, 2.6, 3.2);
+// var p2 = new THREE.Vector3(0.0, 0.0, 0.0);
 
-p2.copy(p1);
+// p2.copy(p1);
 
-// p2向量的xyz变为p1的xyz值
-// console.log(p2);
+// // p2向量的xyz变为p1的xyz值
+// // console.log(p2);
 
-var p3 = new THREE.Vector3(1.2, 2.6, 3.2);
-var p4 = p3.clone();
-// p2对象和p1对象xyz属性相同
-console.log(p4);
+// var p3 = new THREE.Vector3(1.2, 2.6, 3.2);
+// var p4 = p3.clone();
+// // p2对象和p1对象xyz属性相同
+// console.log(p4);
+
+
+
+//创建一个立方体几何对象
+var box = new THREE.BoxGeometry(10, 10, 10);
+//材质对象
+var material = new THREE.MeshLambertMaterial({ color: 0x000ff });
+//网格模型对象
+var mesh = new THREE.Mesh(box, material);
+//克隆网格模型
+var mesh2 = mesh.clone();
+//网格模型mesh平移
+mesh.translateX(20);
+//网格模型添加到场景中
+scene.add(mesh, mesh2);
+//几何体缩放
+box.scale(1.5, 1.5, 1.5);//几何体缩放
+
+
+
+
+
 
 // 高光网格材质MeshPhongMaterial除了和MeshLambertMaterial一样可以实现光源和网格表面的漫反射光照计算，还可以产生高光效果(镜面反射)。
 // var material = new THREE.MeshBasicMaterial({
