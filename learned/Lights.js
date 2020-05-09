@@ -6,7 +6,7 @@ var scene = new THREE.Scene();
 
 
 //创建一个立方体几何对象
-var box = new THREE.BoxGeometry(10, 10, 10);
+var box = new THREE.BoxGeometry(50, 50, 50);
 //材质对象
 var material = new THREE.MeshLambertMaterial({ color: 0x000ff });
 //网格模型对象
@@ -92,9 +92,9 @@ box.scale(1.5, 1.5, 1.5);//几何体缩放
 
 
 // 点光源2  位置和point关于原点对称
-var point2 = new THREE.PointLight(0xffffff);
-point2.position.set(400, 200, 300); //点光源位置
-scene.add(point2); //点光源添加到场景中
+// var point2 = new THREE.PointLight(0xffffff);
+// point2.position.set(400, 200, 300); //点光源位置
+// scene.add(point2); //点光源添加到场景中
 
 
 //环境光    环境光颜色与网格模型的颜色进行RGB进行乘法运算
@@ -104,12 +104,26 @@ scene.add(ambient);
 
 
 // 平行光
-var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-// 设置光源的方向：通过光源position属性和目标指向对象的position属性计算
-directionalLight.position.set(0, 100, 100);
-// 方向光指向对象网格模型mesh2，可以不设置，默认的位置是0,0,0
-directionalLight.target = mesh2;
-scene.add(directionalLight);
+// var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+// // 设置光源的方向：通过光源position属性和目标指向对象的position属性计算
+// // 注意一点平行光光源的位置属性.position并不表示平行光从这个位置向远处照射，
+// // .position属性只是用来确定平行光的照射方向，平行光你可以理解为太阳光，从无限远处照射过来。
+// directionalLight.position.set(0, 100, 100);
+// // 方向光指向对象网格模型mesh2，可以不设置，默认的位置是0,0,0
+// directionalLight.target = mesh2;
+// scene.add(directionalLight);
+
+
+// 聚光光源
+var spotLight = new THREE.SpotLight(0xffffff);
+// 设置聚光光源的位置
+spotLight.position.set(100, 100, 100);
+// 聚光灯光源指向网格模型mesh2
+spotLight.target = mesh2;
+// 设置聚光光源发散角度
+spotLight.angle = Math.PI / 10;
+// 光对象添加到scene场景中
+scene.add(spotLight);
 
 
 // console.log(scene)
