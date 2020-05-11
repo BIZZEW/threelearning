@@ -4,7 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 var scene = new THREE.Scene();
 
 var geometry = new THREE.BoxGeometry(100, 100, 100);
-// 网格模型材质设置为白色
+// 网格模型材质设置为纯蓝色
 var material = new THREE.MeshLambertMaterial({ color: 0x0000ff });
 
 var mesh = new THREE.Mesh(geometry, material);
