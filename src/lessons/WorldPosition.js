@@ -5,32 +5,37 @@ import { BoxGeometry } from 'three';
 var scene = new THREE.Scene();
 
 var geometry = new BoxGeometry(50, 50, 50);
-
 var material = new THREE.MeshPhongMaterial({
     color: 0x0000ff
 });
 
 var mesh = new THREE.Mesh(geometry, material);
-
+// mesh的本地坐标设置为(50, 0, 0)
 mesh.position.set(50, 0, 0);
-
+mesh.scale.set(2, 1, 1);
 var group = new THREE.Group();
-
+// group本地坐标设置和mesh一样设置为(50, 0, 0)
+// mesh父对象设置position会影响得到mesh的世界坐标
 group.position.set(50, 0, 0);
-
 group.add(mesh);
-
+group.scale.set(1, 2, 2);
 scene.add(group);
 
-console.log("本地坐标", mesh.position);
+// .position属性获得本地坐标
+console.log('本地坐标', mesh.position);
+console.log('本地缩放系数', mesh.scale);
 
+// getWorldPosition()方法获得世界坐标
+//该语句默认在threejs渲染的过程中执行,如果渲染之前想获得世界矩阵属性、世界位置属性等属性，需要通过代码更新
 scene.updateMatrixWorld(true);
 
 var worldPosition = new THREE.Vector3();
-
 mesh.getWorldPosition(worldPosition);
-
 console.log('世界坐标', worldPosition);
+
+var worldScale = new THREE.Vector3();
+mesh.getWorldScale(worldScale);
+console.log('世界缩放系数', worldScale);
 
 /**
  * 光源设置
