@@ -56,6 +56,34 @@ function cylinderMesh(R, h, x, y, z) {
     return mesh;
 }
 
+// 递归遍历方法.traverse()
+scene.traverse(function (obj) {
+    if (obj.type === "Group") {
+        console.log(obj.name);
+    }
+    if (obj.type === "Mesh") {
+        console.log('  ' + obj.name);
+        obj.material.color.set(0xffff00);
+    }
+    if (obj.name === "左眼" | obj.name === "右眼") {
+        obj.material.color.set(0x000000)
+    }
+    // 打印id属性
+    console.log("id", obj.id);
+    // 打印该对象的父对象
+    console.log("parent", obj.parent);
+    // 打印该对象的子对象
+    console.log("children", obj.children);
+})
+
+// 遍历查找scene中复合条件的子对象，并返回id对应的对象
+var idNode = scene.getObjectById(14);
+console.log(idNode);
+
+// 遍历查找对象的子对象，返回name对应的对象（name是可以重名的，返回第一个）
+var nameNode = scene.getObjectByName("左腿");
+nameNode.material.color.set(0xff0000);
+
 
 
 /**
