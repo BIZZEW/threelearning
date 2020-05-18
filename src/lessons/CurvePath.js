@@ -9,7 +9,7 @@ var geometry = new THREE.Geometry();
 //圆弧半径
 var R = 80;
 
-var arc = new THREE.ArcCurve(0, 0, R, 0, Math.PI, true);
+var arc = new THREE.ArcCurve(0, 0, R, 0, -Math.PI / 2, true);
 // 半圆弧的一个端点作为直线的一个端点
 var line1 = new THREE.LineCurve(new THREE.Vector2(R, 200, 0), new THREE.Vector2(R, 0, 0));
 
