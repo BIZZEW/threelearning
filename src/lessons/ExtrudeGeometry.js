@@ -55,12 +55,14 @@ var geometry = new THREE.ExtrudeGeometry(//拉伸造型
     //拉伸参数
     {
         bevelEnabled: true,//无倒角
+        bevelSize: 10,
+        bevelThickness: 10,
         extrudePath: curve,//选择扫描轨迹
         steps: 100//扫描方向细分数
     }
 );
 
-var material = new THREE.MeshBasicMaterial({
+var material = new THREE.MeshPhongMaterial({
     color: 0x0000ff,
     // size: 5.0//点对象像素尺寸
 });//材质对象
