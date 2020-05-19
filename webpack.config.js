@@ -26,7 +26,18 @@ module.exports = {
     },
     module: {
         rules: [
-            { test: /\.js$/, use: 'babel-loader' }
+            { test: /\.js$/, use: 'babel-loader' },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192
+                        }
+                    }
+                ]
+            }
         ]
     },
     plugins: [
@@ -36,7 +47,7 @@ module.exports = {
             inject: true,
             title: 'my THREE',
             minify: false,
-            favicon:"./favicon.ico"
+            favicon: "./favicon.ico"
         })
     ]
 }
