@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { BoxGeometry } from 'three';
-import imgURL from '../images/HeYuan.png';
+import imgURL from '../images/current.png';
 import grassPic from '../images/grass.jpg';
 
 var scene = new THREE.Scene();
@@ -15,7 +15,7 @@ var curve = new THREE.CatmullRomCurve3([
     new THREE.Vector3(80, -40, 0),
 ]);
 
-var tubeGeometry = new THREE.TubeGeometry(curve, 100, 0.6, 50, false);
+var tubeGeometry = new THREE.TubeGeometry(curve, 100, 10, 50, false);
 
 var textureLoader = new THREE.TextureLoader();
 
@@ -86,7 +86,7 @@ camera.lookAt(scene.position); //设置相机方向(指向的场景对象)
  */
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize(width, height);//设置渲染区域尺寸
-renderer.setClearColor(0xb9d3ff, 1); //设置背景颜色
+// renderer.setClearColor(0xb9d3ff, 1); //设置背景颜色
 document.body.appendChild(renderer.domElement); //body元素中插入canvas对象
 
 // function render() {
