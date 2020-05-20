@@ -88,13 +88,16 @@ var normals = new Float32Array([
 // 设置几何体attributes属性的位置normal属性
 //3个为一组,表示一个顶点的xyz坐标
 geometry.attributes.normal = new THREE.BufferAttribute(normals, 3);
+
 // Uint16Array类型数组创建顶点索引数据
 var indexes = new Uint16Array([
-    0, 1, 2, 0, 2, 3,
+    // 0, 1, 2, 0, 2, 3,
+    0, 1, 2, 3, 0, 2,
 ]);
 // 索引数据赋值给几何体的index属性
 //1个为一组
 geometry.index = new THREE.BufferAttribute(indexes, 1);
+
 /**纹理坐标*/
 var uvs = new Float32Array([
     //图片左下角
