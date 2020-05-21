@@ -3,7 +3,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { BoxGeometry, Geometry } from 'three';
 import imgURL from '../images/HeYuan.png';
 import earthPicNormal from '../images/earth.png';
-import earthPic from '../images/EarthPic3.jpg';
+import earthPic from '../images/EarthPic2.jpg';
 import grassPic from '../images/grass.jpg';
 import legoPic from '../images/lego.jpg';
 import testVid from '../images/test.mp4';
