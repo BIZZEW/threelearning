@@ -55,7 +55,7 @@ for (let i = 0; i < size * 4; i += 4) {
     data2[i + 1] = 255 * Math.random()
     data2[i + 2] = 255 * Math.random()
     // 设置透明度分量A
-    data2[i + 3] = 255 * 0.5
+    data2[i + 3] = 255 * Math.random()
 }
 // 创建数据文理对象   RGBA格式：THREE.RGBAFormat
 var texture2 = new THREE.DataTexture(data2, width2, height2, THREE.RGBAFormat);
