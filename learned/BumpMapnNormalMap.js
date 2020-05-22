@@ -32,12 +32,18 @@ var geometry = new THREE.SphereGeometry(100, 100, 100);
 var textureLoader = new THREE.TextureLoader();
 
 var texture = textureLoader.load(earthPic);
+// 加载高光贴图
+var textureSpecular = textureLoader.load(earthPicNormal);
 
 var textureNormal = textureLoader.load(earthPicNormal);
 
+// 高光贴图属性.specularMap和高光属性.specular是对应的，
+// 也就是说只有高光网格材质对象MeshPhongMaterial才具备高光贴图属性.specularMap。
 var material = new THREE.MeshPhongMaterial({
     map: texture,
-    normalMap: textureNormal,
+    // normalMap: textureNormal,
+    shininess: 30,//高光部分的亮度，默认30
+    specularMap: textureSpecular, //高光贴图
     normalScale: new THREE.Vector2(2, 2),
 });
 
