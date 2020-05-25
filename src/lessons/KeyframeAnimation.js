@@ -78,7 +78,13 @@ var duration = 20;
 // 多个帧动画作为元素创建一个剪辑clip对象，命名"default"，持续时间20
 var clip = new THREE.AnimationClip("default", duration, [posTrack, colorKF, scaleTrack]);
 
+// KeyframeTrack关键帧构成AnimationClip剪辑
 
+// 用对象（group）配置AnimationMixer混合器
+
+// AnimationMixer混合器加AnimationClip剪辑生成AnimationAction操作
+
+// AnimationAction操作控制动画播放
 
 
 // 播放关键帧
