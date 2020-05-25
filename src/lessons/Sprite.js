@@ -11,19 +11,66 @@ import ballPic from '../images/ball.png';
 
 var scene = new THREE.Scene();
 
-var texture = new THREE.TextureLoader().load(ballPic);
+// var texture = new THREE.TextureLoader().load(ballPic);
 
-var spriteMaterial = new THREE.SpriteMaterial({
-    color: 0xff00ff,
-    rotation: Math.PI / 4,
+// var spriteMaterial = new THREE.SpriteMaterial({
+//     color: 0xff00ff,
+//     rotation: Math.PI / 4,
+//     map: texture,
+// });
+
+// var sprite = new THREE.Sprite(spriteMaterial);
+
+// scene.add(sprite);
+
+// sprite.scale.set(10, 10, 1);
+
+
+/**
+ * 精灵创建树林效果
+ */
+// 加载树纹理贴图
+// var textureTree = new THREE.TextureLoader().load(ballPic);
+// // 批量创建表示一个树的精灵模型
+// for (let i = 0; i < 100; i++) {
+//     var spriteMaterial = new THREE.SpriteMaterial({
+//         //设置精灵纹理贴图
+//         map: textureTree,
+//     });
+//     // 创建精灵模型对象
+//     var sprite = new THREE.Sprite(spriteMaterial);
+
+//     scene.add(sprite);
+//     // 控制精灵大小,
+//     //// 只需要设置x、y两个分量就可以
+//     var k1 = Math.random() - 0.5;
+//     var k2 = Math.random() - 0.5;
+//     var k3 = Math.random() - 0.5;
+//     sprite.scale.set(100 * k3, 100 * k3, 1);
+//     // 设置精灵模型位置，在xoz平面上随机分布
+//     sprite.position.set(1000 * k1, 50, 1000 * k2);
+// }
+
+var geometry = new THREE.PlaneGeometry(1000, 1000);
+
+var texture = new THREE.TextureLoader().load(grassPic);
+
+texture.wrapS = THREE.RepeatWrapping;
+
+texture.wrapT = THREE.RepeatWrapping;
+
+texture.repeat.set(10, 10);
+
+var material = new THREE.MeshLambertMaterial({
+    color: 0x777700,
     map: texture,
 });
 
-var sprite = new THREE.Sprite(spriteMaterial);
+var mesh = new THREE.Mesh(geometry, material);
 
-scene.add(sprite);
+scene.add(mesh);
 
-sprite.scale.set(10, 10, 1);
+mesh.rotateX(-Math.PI / 2);
 
 
 
