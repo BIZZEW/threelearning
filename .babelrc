@@ -2,5 +2,13 @@
     "presets": [
         "es2015"
     ],
-    "plugins":[]
+    "plugins": [
+        [
+            "component",
+            {
+                "libraryName": "element-ui",
+                "styleLibraryName": "theme-chalk"
+            }
+        ]
+    ]
 }
