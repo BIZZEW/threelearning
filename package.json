@@ -22,7 +22,7 @@
   "dependencies": {
     "element-ui": "^2.13.2",
     "express": "^4.17.1",
-    "three": "^0.115.0",
+    "three": "^0.125.0",
     "vue": "^2.6.11"
   },
   "devDependencies": {
