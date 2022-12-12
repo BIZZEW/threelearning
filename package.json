@@ -21,7 +21,7 @@
   "homepage": "https://github.com/BIZZEW/threelearning#readme",
   "dependencies": {
     "element-ui": "^2.13.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "three": "^0.115.0",
     "vue": "^2.6.11"
   },
